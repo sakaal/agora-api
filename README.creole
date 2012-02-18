@@ -1,0 +1,8 @@
+== Agora ==
+
+Agora Exchange for Online Managed Services
+
+This is the agora.git repository.
+
+=== See also ===
+* [[http://sourceforge.net/p/agora-exchange|Agora Exchange]] on SourceForge.net
