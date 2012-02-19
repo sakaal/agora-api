@@ -26,6 +26,12 @@
   </scm>
 
   <distributionManagement>
+    <repository>
+      <id>releases.m2.agora-exchange.org</id>
+      <name>Agora releases repository</name>
+      <uniqueVersion>true</uniqueVersion>
+      <url>scp://shell.sourceforge.net/home/project-web/agora-exchange/htdocs/m2/releases</url>
+    </repository>
     <snapshotRepository>
       <id>snapshots.m2.agora-exchange.org</id>
       <name>Agora snapshots repository</name>
@@ -49,11 +55,38 @@
   <contributors/>
 
   <dependencies>
+
+    <dependency>
+      <groupId>org.agora-exchange.api</groupId>
+      <artifactId>agora-common</artifactId>
+      <version>0.0.3-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
   <build>
     <finalName>${project.artifactId}</finalName>
     <plugins>
+
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <configuration>
+          <extension>true</extension>
+          <schemaExcludes>
+            <exclude>XMLSchema.xsd</exclude>
+            <exclude>*.dtd</exclude>
+          </schemaExcludes>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -62,6 +95,7 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 

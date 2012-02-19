@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Agora Exchange for Online Managed Services -->
+
+<!-- Copyright (C) 2012 Sakari A. Maaranen -->
+
+<!-- This library is free software; you can redistribute it and/or modify 
+  it under the terms of the GNU Lesser General Public License as published 
+  by the Free Software Foundation, either version 3 of the License, or (at 
+  your option) any later version. -->
+
+<!-- This library is distributed in the hope that it will be useful, but 
+  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+  or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License 
+  for more details. -->
+
+<!-- You should have received a copy of the GNU Lesser General Public License 
+  along with this library. If not, see <http://www.gnu.org/licenses/>. -->
+
+<xs:schema targetNamespace="http://www.agora-exchange.org/XML"
+  xmlns="http://www.agora-exchange.org/XML" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+  jaxb:extensionBindingPrefixes="xjc" elementFormDefault="qualified"
+  version="0.1" xml:lang="EN">
+
+  <xs:complexType name="Translation">
+    <xs:annotation>
+      <xs:appinfo>
+        <jaxb:property name="text"/>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+        <xs:attribute name="lang" type="xs:language" use="required">
+          <xs:annotation>
+            <xs:appinfo>
+              <jaxb:property name="languageCode"/>
+            </xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="Doc">
+    <xs:annotation>
+      <xs:appinfo>
+        <jaxb:class name="Description">
+          <jaxb:javadoc>Declares a list of terms and definitions in
+            different languages.
+          </jaxb:javadoc>
+        </jaxb:class>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:appinfo>
+          <jaxb:property name="translations"/>
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:element name="dt" type="Translation">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:class name="Term">
+              <jaxb:javadoc>Declares a synonymous term in a given
+                language.
+              </jaxb:javadoc>
+            </jaxb:class>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dd" type="Translation">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:class name="Definition">
+              <jaxb:javadoc>Provides a definition in a given language.
+              </jaxb:javadoc>
+            </jaxb:class>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="ParameterDeclaration">
+    <xs:sequence>
+      <xs:element name="doc" type="Doc" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property name="description"/>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="domain" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property generateIsSetMethod="true"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:annotation>
+            <xs:appinfo>
+              <xjc:javaType
+                adapter="org.agora_exchange.translate.DomainConverter"
+                name="org.agora_exchange.validate.DataValidator"/>
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:restriction base="xs:token"/>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="recommend" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property name="recommendedValue"
+              generateIsSetMethod="true"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250"></xs:maxLength>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="client" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property name="clientAccess"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="16"></xs:maxLength>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="provider" minOccurs="0">
+        <xs:annotation>
+          <xs:appinfo>
+            <jaxb:property name="providerAccess"/>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="16"></xs:maxLength>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="fixed" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:boolean"/>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="param" type="xs:token" use="required">
+      <xs:annotation>
+        <xs:appinfo>
+          <jaxb:property name="parameterName"/>
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+</xs:schema>
