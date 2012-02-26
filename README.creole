@@ -1,8 +1,8 @@
-== Agora ==
+== Agora API ==
 
 Agora Exchange for Online Managed Services
 
-This is the agora.git repository.
+This is the agora-api repository.
 
 === See also ===
 * [[http://sourceforge.net/p/agora-exchange|Agora Exchange]] on SourceForge.net

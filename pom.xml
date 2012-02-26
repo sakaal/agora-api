@@ -52,7 +52,8 @@
   <contributors/>
 
   <modules>
-    <module>xml</module>
+    <module>../agora-common</module>
+    <module>../agora-xml</module>
   </modules>
 
   <build>
