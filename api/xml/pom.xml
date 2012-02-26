@@ -2,70 +2,32 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.agora-exchange.api</groupId>
+    <artifactId>agora-api</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+
   <groupId>org.agora-exchange.api</groupId>
   <artifactId>agora-xml</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>Agora XML</name>
   <url>http://www.agora-exchange.org/api/xml</url>
   <description>Agora XML schema-derived JAXB Java API</description>
-  <organization>
-    <name>agora-exchange.org</name>
-  </organization>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <inceptionYear>2012</inceptionYear>
-  <scm>
-    <url>http://github.com/sakaal/agora</url>
-    <connection>scm:git:git://github.com/sakaal/agora.git</connection>
-    <developerConnection>scm:git:git@github.com:sakaal/agora.git</developerConnection>
-  </scm>
-
-  <distributionManagement>
-    <repository>
-      <id>releases.m2.agora-exchange.org</id>
-      <name>Agora releases repository</name>
-      <uniqueVersion>true</uniqueVersion>
-      <url>scp://shell.sourceforge.net/home/project-web/agora-exchange/htdocs/m2/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>snapshots.m2.agora-exchange.org</id>
-      <name>Agora snapshots repository</name>
-      <uniqueVersion>false</uniqueVersion>
-      <url>scp://shell.sourceforge.net/home/project-web/agora-exchange/htdocs/m2/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
-
-  <developers>
-    <developer>
-      <id>sakaal</id>
-      <name>Sakari A. Maaranen</name>
-      <organization>agora-exchange.org</organization>
-      <organizationUrl>http://www.agora-exchange.org</organizationUrl>
-      <roles>
-        <role>original author</role>
-      </roles>
-    </developer>
-  </developers>
-
-  <contributors/>
 
   <dependencies>
 
     <dependency>
       <groupId>org.agora-exchange.api</groupId>
       <artifactId>agora-common</artifactId>
-      <version>0.0.3-SNAPSHOT</version>
+      <version>0.1.0-SNAPSHOT</version>
     </dependency>
 
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
     <plugins>
 
       <plugin>
@@ -85,15 +47,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
       </plugin>
 
     </plugins>

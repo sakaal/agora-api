@@ -161,8 +161,8 @@
         <xs:simpleType>
           <xs:annotation>
             <xs:appinfo>
-              <xjc:javaType adapter="org.agora_exchange.translate.DomainConverter"
-                name="org.agora_exchange.validate.DataValidator"/>
+              <xjc:javaType adapter="org.agora_exchange.validation.DomainConverter"
+                name="org.agora_exchange.validation.Validator"/>
             </xs:appinfo>
           </xs:annotation>
           <xs:restriction base="xs:token"/>
