@@ -20,7 +20,7 @@
   <scm>
     <url>http://github.com/sakaal/agora-api</url>
     <connection>scm:git:git://github.com/sakaal/agora-api.git</connection>
-    <developerConnection>scm:git:git@github.com:sakaal/agora-api.git</developerConnection>
+    <developerConnection>scm:git:ssh://git@github.com/sakaal/agora-api.git</developerConnection>
   </scm>
 
   <distributionManagement>
